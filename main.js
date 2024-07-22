@@ -4,8 +4,7 @@
 const idade = 0
 document.body.innerText = 'Sua idade é ' + (idade || 'Não informado')
 
-// Com o ??
-//é mais restritivo
+// Com o ?? é mais restritivo
 // Só considera inválido o “null” e “undefined”
 document.body.innerText = 'Sua idade é ' + (idade ?? 'Não informado')
 
@@ -20,3 +19,7 @@ const user = {
 }
 
 document.body.innerText = ('name' in user)
+document.body.innerText = Object.keys(user)
+document.body.innerText = Object.values(user) //Não funciona com objeto dentro de objeto
+document.body.innerText = JSON.stringify(Object.values(user))
+document.body.innerText = JSON.stringify(Object.entries(user))

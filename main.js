@@ -1,5 +1,7 @@
 // NULLISH COALESCING OPERATOR
 
+// A diferença para um "if" (ou "?:"") é que o "if" testa diversas condições, enquanto este testa apenas se é "null" ou "undefined"
+
 // O problema é que o || considera o 0 como false, sendo que ele seria válido para a situação
 // const idade = 0
 // document.body.innerText = 'Sua idade é ' + (idade || 'Não informado')
@@ -87,6 +89,7 @@
 // document.body.innerText = JSON.stringify(user)
 
 // OPTIONAL CHAINING
+// Para lidar com objetos nulos ou inexistentes
 const user = {
     name: 'Diego',
     age: 22,
@@ -94,10 +97,70 @@ const user = {
         street: 'Rua Teste',
         number: 278,
         zip: {
-            code: '59300000',
+            code: '59300-000',
             city: 'Caicó'
+        },
+        showFullAddress() {
+            return 'ok'
         }
     },
 }
+// . para acessar a propriedade do objeto
+// document.body.innerText = user.address.zip.code
 
-document.body.innerText = user.address.street
+// Forma menos prática de verificar a existência
+// document.body.innerText = user.address
+//     ? user.address.zip
+//         ? user.address.zip.code
+//             ? user.address.zip.code
+//             : "Sem informações do CEP"
+//         : "Sem informações da cidade"
+//     : "Sem informações do endereço"
+
+// Forma prática
+// ?. para testar a existência da propriedade anterior antes de acessar a seguinte, retornando "undefined" ou o que eu colocar como valor padrão
+// document.body.innerText = user.address?.zip?.code ?? "Não informado"
+
+// Para funções
+// document.body.innerText = user.address?.showFullAddress?.()
+
+// Acessar propriedades de forma prática
+// Não dá erro, também mostra o "undefined"
+// const key = 'street'
+// document.body.innerText = user.address[key]
+
+// MÉTODOS DE ARRAY
+// Para percorrer arrays
+const array = [1, 2, 3, 4, 5]
+
+// for (const i of array) {
+//     document.body.innerText += i
+// }
+
+// array.forEach(i => {
+//     document.body.innerText += i
+// })
+
+// MAP()
+// Semelhante ao "forEach", porém com o "map" é possível fazer um retorno de forma mais prática, dentro do próprio método
+// Com ele não há filtros ou exclusões, sempre vai ter o mesmo tamanho do vetor original
+
+// const newArray = array.map(item => {
+//     return item * 2
+// })
+
+// const newArray = array.map(item => {
+//     if (item % 2 == 0) { // Se for par
+//         return item * 10
+//     } else {
+//         return item
+//     }
+// })
+
+// document.body.innerText = JSON.stringify(newArray)
+
+// FILTER()
+// Não modifica os valores, apenas pega uma parte deles; filtra
+
+const newArray = array.filter(item => item % 2 == 0)
+document.body.innerText = JSON.stringify(newArray)

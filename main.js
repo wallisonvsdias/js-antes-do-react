@@ -131,6 +131,7 @@ const user = {
 
 // MÉTODOS DE ARRAY
 // Para percorrer arrays
+// map, filter, every, some, find, findIndex, reduce
 const array = [1, 2, 3, 4, 5]
 
 // for (const i of array) {
@@ -141,9 +142,11 @@ const array = [1, 2, 3, 4, 5]
 //     document.body.innerText += i
 // })
 
-// MAP()
+// MAP
 // Semelhante ao "forEach", porém com o "map" é possível fazer um retorno de forma mais prática, dentro do próprio método
 // Com ele não há filtros ou exclusões, sempre vai ter o mesmo tamanho do vetor original
+
+// => sintaxe curta de uma função, em que "item" seria o nome da função e retornando os valores dentro de {}
 
 // const newArray = array.map(item => {
 //     return item * 2
@@ -159,8 +162,39 @@ const array = [1, 2, 3, 4, 5]
 
 // document.body.innerText = JSON.stringify(newArray)
 
-// FILTER()
+// FILTER
 // Não modifica os valores, apenas pega uma parte deles; filtra
 
-const newArray = array.filter(item => item % 2 == 0)
-document.body.innerText = JSON.stringify(newArray)
+// const newArray = array.filter(item => item % 2 !== 0)
+
+// const newArray = array
+//     .filter(item => item % 2 !== 0)
+//     .map(item => item *10)
+
+// document.body.innerText = JSON.stringify(newArray)
+
+// EVERY
+// Retorna valor booleano (true ou false) caso todos os itens satisfaçam a condição
+
+// const allItemsAreNumbers = array.every(item => typeof item == 'number')
+// document.body.innerText = JSON.stringify(allItemsAreNumbers)
+
+
+// SOME
+// Testa se pelo menos um item satisfaz a condição
+
+// const allItemsAreNumbers = array.some(item => typeof item !== 'number')
+// document.body.innerText = JSON.stringify(allItemsAreNumbers)
+
+// FIND
+// Para encontrar o primeiro item do array que satisfaça a condição
+
+// const findOddNumber = array.find(item => item % 2 == 0)
+// document.body.innerText = JSON.stringify(findOddNumber)
+
+// FINDINDEX
+// O mesmo que "find", porém retorna o índice ao invés do valor
+
+const findIndexOddNumber = array.findIndex(item => item % 2 == 0)
+document.body.innerText = JSON.stringify(findIndexOddNumber)
+

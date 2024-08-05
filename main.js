@@ -1,4 +1,4 @@
-// NULLISH COALESCING OPERATOR
+// NULLISH COALESCING OPERATOR ----------
 
 // A diferença para um "if" (ou "?:"") é que o "if" testa diversas condições, enquanto este testa apenas se é "null" ou "undefined"
 
@@ -10,7 +10,7 @@
 // Só considera inválido o “null” e “undefined”
 // document.body.innerText = 'Sua idade é ' + (idade ?? 'Não informado')
 
-// OBJETOS
+// OBJETOS ----------
 // const user = {
 //     name: 'Diego',
 //     nickname: 'Valdinho',
@@ -27,7 +27,7 @@
 // document.body.innerText = JSON.stringify(Object.values(user))
 // document.body.innerText = JSON.stringify(Object.entries(user))
 
-// DESESTRUTURAÇÃO
+// DESESTRUTURAÇÃO ----------
 // Separa parte de um objeto para uma variável
 // Forma comum:
 // const address = user.address
@@ -52,7 +52,7 @@
 
 // document.body.innerText = printAge(user)
 
-// REST OPERATOR
+// REST OPERATOR ----------
 // Para obter as propriedades restantes do objeto, retirando apenas a(s) propriedade(s) já citada(s)
 // const { name, idade, ...rest } = user
 
@@ -88,23 +88,23 @@
 
 // document.body.innerText = JSON.stringify(user)
 
-// OPTIONAL CHAINING
+// OPTIONAL CHAINING ----------
 // Para lidar com objetos nulos ou inexistentes
-const user = {
-    name: 'Diego',
-    age: 22,
-    address: {
-        street: 'Rua Teste',
-        number: 278,
-        zip: {
-            code: '59300-000',
-            city: 'Caicó'
-        },
-        showFullAddress() {
-            return 'ok'
-        }
-    },
-}
+// const user = {
+//     name: 'Diego',
+//     age: 22,
+//     address: {
+//         street: 'Rua Teste',
+//         number: 278,
+//         zip: {
+//             code: '59300-000',
+//             city: 'Caicó'
+//         },
+//         showFullAddress() {
+//             return 'ok'
+//         }
+//     },
+// }
 // . para acessar a propriedade do objeto
 // document.body.innerText = user.address.zip.code
 
@@ -129,10 +129,10 @@ const user = {
 // const key = 'street'
 // document.body.innerText = user.address[key]
 
-// MÉTODOS DE ARRAY
+// MÉTODOS DE ARRAY ----------
 // Para percorrer arrays
 // map, filter, every, some, find, findIndex, reduce
-const array = [1, 2, 3, 4, 5]
+// const array = [1, 2, 3, 4, 5]
 
 // for (const i of array) {
 //     document.body.innerText += i
@@ -195,6 +195,30 @@ const array = [1, 2, 3, 4, 5]
 // FINDINDEX
 // O mesmo que "find", porém retorna o índice ao invés do valor
 
-const findIndexOddNumber = array.findIndex(item => item % 2 == 0)
-document.body.innerText = JSON.stringify(findIndexOddNumber)
+// const findIndexOddNumber = array.findIndex(item => item % 2 == 0)
+// document.body.innerText = JSON.stringify(findIndexOddNumber)
 
+// REDUCE
+// Para reduzir o objeto a algo
+
+// const soma = array.reduce((acc, item) => {
+//     document.body.innerText += `${acc} , ${item} ---`
+//     return acc + item
+// }, 0)
+
+// document.body.innerText += JSON.stringify(soma)
+
+// TEMPLATE LITERALS ----------
+
+// const user = 'Wallison'
+// const message = 'Bem vindo, ' + user + '!'
+// Forma mais prática abaixo, com interpolação de strings
+// const message = `Bem-vindo, ${user}!`
+
+const user = ''
+// const message = `Bem vindo, ${user ? user : "visitante"}!` // Com o if é desnecessariamente maior
+// const message = `Bem vindo, ${user ?? "visitante"}!`
+// const message = `Bem vindo, ${user || "visitante"}!` // Melhor uso, já que 0 e '' não são considerados nele
+
+
+document.body.innerText = message

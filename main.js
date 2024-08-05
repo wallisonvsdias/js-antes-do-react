@@ -215,10 +215,94 @@
 // Forma mais prática abaixo, com interpolação de strings
 // const message = `Bem-vindo, ${user}!`
 
-const user = ''
+// const user = ''
 // const message = `Bem vindo, ${user ? user : "visitante"}!` // Com o if é desnecessariamente maior
 // const message = `Bem vindo, ${user ?? "visitante"}!`
 // const message = `Bem vindo, ${user || "visitante"}!` // Melhor uso, já que 0 e '' não são considerados nele
 
 
-document.body.innerText = message
+// document.body.innerText = message
+
+
+// PROMISES
+// Torna coisas assíncronas (em segundo plano) para não atrasar o restante do código
+// .then ou .catch, mas também posso criá-las
+
+// const soma = (a, b) => {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve(a + b)
+//         }, 2000)
+//     })
+// } // return e {} opcionais por ser apenas 1 sentença
+
+// soma(1, 6)
+//     .then(soma => {
+//         document.body.innerText = soma
+//     })
+//     .catch(err => {
+//         console.log(err)
+//     })
+
+
+// fetch('https://api.github.com/users/diego3g')
+//     .then(response => {
+//         return response.json()
+//     })
+//     .then(body => {
+//         console.log(body)
+//     })
+//     // .then(response => {
+//     //     response.text().then(body => {
+//     //         console.log(body)
+//     //     })
+//     // })
+//     .catch(err => {
+//         console.log(err)
+//     })
+//     .finally(() => {
+//         console.log('Deu certo')
+//     })
+
+// async function fetchDataGitHub() {
+//     try {
+//         const response = await fetch('https://api.github.com/users/diego3g') // await para aguardar essa promise ser finalizada
+//         const body = await response.json()
+    
+//         console.log(body)
+//     } catch(err) {
+//         console.log(err)
+//     } finally {
+//         console.log('OK')
+//     }
+// }
+
+// fetchDataGitHub()
+
+// Named Export
+// Nomes iguais da importação e exportação
+
+// import { soma, sub, PI } from './lib/math.js'
+
+// console.log(soma(1, 4))
+// console.log(sub(1, 4))
+// console.log(PI)
+
+// Default
+// Apenas no caso de ter só 1 propriedade
+// (Melhor sempre a forma anterior)
+// import soma from './lib/sum.js'
+
+// console.log(soma(5, 10))
+
+// Importar tudo de uma vez
+// import * as math from './lib/math.js'
+
+// console.log(math.soma(1, 10))
+
+// Importar renomeando
+// import { soma as sum } from './lib/math.js'
+// console.log(sum(1,2))
+
+// Importando e exportando ao mesmo tempo
+export { soma } from './lib/math'
